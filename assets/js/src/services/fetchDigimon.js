@@ -1,6 +1,3 @@
-import { Digimon } from "../model/Digimon.js";
-import { createDigimon } from "../utils/createDigimon.js";
-
 const BASE_URL = "https://digi-api.com/api/v1";
 
 export const fetchAllDigimon = async() => {

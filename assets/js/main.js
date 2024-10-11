@@ -18,29 +18,38 @@ const createOneCardDigimon = (digimon) => {
             <h2>${digimon.name}</h2>
         </div>
         <div class="card__body">
-            <ul>
+              <ul>
                 <li>Level: ${digimon.level[0]}</li>
-                ${
-                    digimon.attributes.forEach((attribute) => {
-                        return `<li>${attribute}</li>`;
-                })}
-                ${
-                    digimon.types.forEach((type) => {
-                        return `<li>${type}</li>`;
-                })}
-                ${
-                    digimon.fields.forEach((field) => {
-                        return `<li>
-                                    <div>
-                                        <p>${field.field}</p>
-                                        <img src="${field.image}" alt="imagen de ${field.field} />
-                                    </div>
-                                </li>`
-                    })
-                }
+                <div>
+                    <p>attributes</p>
+
+                    ${digimon.attributes
+                        .map((attribute) => `<li>${attribute}</li>`)
+                        .join("")}
+                </div>
+                <div>
+                    <p>Types</p>
+
+                    ${digimon.types.map((type) => `<li>${type}</li>`).join("")}
+                </div>
+                <div>
+                    <p>Fields</p>
+
+                    ${digimon.fields
+                        .map(
+                          (field) =>
+                            `<li>
+                              <div>
+                                  <p>${field.field}</p>
+                                  <img src="${field.image}" alt="imagen de ${field.field}" />
+                              </div>
+                          </li>`
+                        )
+                        .join("")}
+                </div>
             </ul>
             <p>${digimon.description.description}</p>
-            <p>Año de lanzamiento: ${digimon.release}
+            <p>Año de lanzamiento: ${digimon.release}</p>
         </div>
     </div>
     `;
