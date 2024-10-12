@@ -1,6 +1,7 @@
 import { fetchOneDigimon } from "../services/fetchDigimon.js"
 
 export class Digimon {
+    #id
     #name
     #image
     #level
@@ -11,6 +12,7 @@ export class Digimon {
     #realease
 
     constructor(
+        id,
         name,
         image,
         level,
@@ -20,6 +22,7 @@ export class Digimon {
         description,
         release
     ) {
+        this.#id = id
         this.#name = name
         this.#image = image
         this.#level = level
@@ -28,6 +31,10 @@ export class Digimon {
         this.#fields = fields
         this.#description = description
         this.#realease = release
+    }
+    
+    get id() {
+      return this.#id
     }
 
     get name() {
@@ -80,6 +87,7 @@ export class Digimon {
           const digimon = await fetchOneDigimon(digimonSearched);
 
           const {
+            id,
             name,
             images,
             levels,
@@ -105,6 +113,7 @@ export class Digimon {
           );
 
           const newDigimon = new Digimon(
+            id,
             name,
             imageNormalize,
             levelNormalize,
